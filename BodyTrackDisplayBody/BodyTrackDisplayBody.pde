@@ -119,11 +119,16 @@ void draw() {
   bodyTrack.loadPixels();
   colorImg.loadPixels();
   
-  bodyTrack.set(0, 0, colorImg.get());
+  for(int x = 0; x < width; x++) {
+    for(int y = 0; y < height; y++) {
+      int loc = x + y * width;
+      bodyTrack.pixels[loc] = color(colorImg.pixels[loc]);
+    }
+  }
+  
  
-
   //obtain an ArrayList of the users currently being tracked
-  ArrayList<PImage> bodyTrackList = kinect.getBodyTrackUser();
+  //ArrayList<PImage> bodyTrackList = kinect.getBodyTrackUser();
 
 /*
   //iterate through all the users
@@ -135,7 +140,7 @@ void draw() {
       image(bodyTrackImg, 320 + 240*(i - 3), 424, 320, 240 );
   }
 */
-
+/*
   fill(0);
   textSize(16);
   text(kinect.getNumOfUsers(), 50, 50);
@@ -150,7 +155,7 @@ void draw() {
     if (recording) {
     saveFrame("output/frames####.png");
   }
-
+*/
 /*
   if (kinect.getNumOfUsers() > 0) {
         bodyStamp = millis();
