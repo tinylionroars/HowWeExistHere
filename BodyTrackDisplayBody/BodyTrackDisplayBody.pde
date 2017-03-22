@@ -5,10 +5,6 @@ import KinectPV2.*;
 
 import gab.opencv.*;
 
-import processing.video.*;
-
-
-Capture video;
 
 KinectPV2 kinect;
 
@@ -41,10 +37,7 @@ void setup() {
   kinect.enableDepthImg(true);
 
   kinect.init();
-  
-  
-  video = new Capture(this, 640, 480);
-  video.start();
+
   
   
   PImage bodyTrack = kinect.getBodyTrackImage();
@@ -54,29 +47,28 @@ void setup() {
   opencv.useColor();
 }
 
-void captureEvent(Capture video) {
-  video.read();
-}
-
 void draw() {
 
   image(kinect.getBodyTrackImage(), 0, 0, 640, 480);
   
-  image(video, 640, 0, 1280, 480);
-  
+  image(kinect.getColorImage(), 640, 0, 1280, 480);
   
   PImage bodyTrack = kinect.getBodyTrackImage();
   PImage colorImg = kinect.getColorImage();
+  PImage layered = createImage(640, 480, RGB);
+  
+  layered.resize(640, 480);
   
   bodyTrack.loadPixels();
   colorImg.loadPixels();
+  layered.loadPixels();
   
-  createImage(bodyTrack,
+  layered = bodyTrack.get();
   
-  for(float x = 0; x < width; x++) {
-    for(float y = 0; y < height; y++) {
-      float loc = x + y * width;
-      bodyTrack.pixels[loc] = color(colorImg.pixels[loc]);
+  for(int x = 0; x < width; x++) {
+    for(int y = 0; y < height; y++) {
+      int loc = x + y * width;
+      layered.pixels[loc] = color(colorImg.pixels[loc]);
     }
   }
  
