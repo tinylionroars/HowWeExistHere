@@ -1,0 +1,60 @@
+
+
+/*
+background subtraction?
+
+detect body
+  for detected pixels, display rgb of sensor
+  send detected body information to openCV
+  getVideoImage
+
+RGB mode v Depth Image v OpenCV
+
+capture image
+
+display image(s) of detected pixels ONLY (no background)
+
+mindful of location in space so get furthest pixels (upper left corner, lower right corner) maybe only use this for color values idk [SEE coding challenge for highest/lowest point]
+
+Katherine's Notes:
+
+//background subtraction
+
+
+0. once someone is in the frame:
+1. take all those blue pixels for outline of body
+
+
+1.a upper left corner, lower right corner
+   - see Dan Shiffman coding challenge for highest point, to figure out the bounding box of the body (in order to only get the body)
+
+
+1.b for those pixels, show the rgb pixels there
+   - turn that rgb mode on
+   - rgb mode of kinect
+   - rgb depth image
+
+
+2. snap an image 
+3. display image
+
+
+// using the kinect to get the body into Processing
+// send that to openCV
+
+*/
+
+
+//Message to Ev
+/*
+I want to build a thing that projects an image of the people who have existed in a space over time.
+
+SO ideally the processing will take body track data from the kinect v2
+
+Use that to determine which rbg data to pull from the kinect's rgb (using openCV or referencing pixels in a nested for loop or building a shader or WHAT FUCKING EVER WILL WORK NOTHING HAS WORKED)
+
+Use saveFrames or something idk to capture images of bodies existing in that space
+(on a timer, since I want this to run for a while & not crash my computer)
+
+Project those bodies back into the space (location irrelevant, except preferably not a fuckton of them layered on top of each other), ideally maybe also only displaying a smallish number of random frames, so it isn't a giant mess
+*/
