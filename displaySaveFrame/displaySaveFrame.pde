@@ -20,6 +20,16 @@ PImage[] images = new PImage[maxImages];
 
 int next = 0;
 
+
+int r = 255;
+
+int g = 255;
+
+int b = 255;
+
+int a = 255;
+
+
 void setup() { 
   size(640, 480);
   
@@ -27,7 +37,7 @@ void setup() {
   // Don't forget to put the JPG files in the data folder!
   for (int i = 0; i < images.length; i ++ ) {
     images[i] = loadImage( "proto" + i + ".jpg" );
-    image(images[i], random(1000), random(1000));
+    image(images[i], random(-400, 400), random(-250, 250));
   }
   
   video = new Capture(this, 640, 480);
@@ -42,6 +52,7 @@ void draw() {
   //image(video, 0, 0);
   
   if ((second() % 5) == 0) {
+    tint(random(255), random(255), random(255), (frameCount - dispIndex*25) % 255);
     image(images[dispIndex], random(-400, 400), random(-250, 250));
     dispIndex = (dispIndex + 1) % images.length;
   }
