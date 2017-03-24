@@ -1,5 +1,5 @@
-//Source code from Daniel Shiffman Learning Processing chapter 15-04
-//All other code Phoenix Lio(n), based in examples on processing.org reference & library pages
+//Source code from Daniel Shiffman Learning Processing example 15-04
+//All other code Phoenix Lio(n), based in examples on processing.org reference & libraries pages
 
 import processing.video.*;
 
@@ -48,13 +48,12 @@ void captureEvent(Capture video) {
 
 void draw() {
   //image(video, 0, 0);
-  
   if ((second() % 5) == 0) {
-    tint(random(255), random(255), random(255), (frameCount - dispIndex*25) % 255);
+    tint(random(80,255), random(80,255), random(80,255), (frameCount - random(10,50)) % 255);
     image(images[dispIndex], random(-400, 400), random(-250, 250));
+    delay(200);
     dispIndex = (dispIndex + 1) % images.length;
   }
-  
   // increment image index by one each cycle
   // use modulo " % "to return to 0 once the end of the array is reached
   //imageIndex = (imageIndex + 1) % images.length;
