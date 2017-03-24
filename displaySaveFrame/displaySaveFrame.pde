@@ -1,7 +1,5 @@
-// Learning Processing
-// Daniel Shiffman
-// http://www.learningprocessing.com
-// Example 15-04
+//Source code from Daniel Shiffman Learning Processing chapter 15-04
+//All other code my own, based on examples on processing.org reference & library pages
 
 import processing.video.*;
 
