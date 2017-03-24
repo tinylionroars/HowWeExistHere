@@ -11,7 +11,9 @@ Capture video;
 
 int maxImages = 10; // Total # of images
 
-int imageIndex = 0; // Initial image to be displayed is the first
+int imageIndex = 0; // Initial image to be recorded is the first
+
+int dispIndex = 0; //Initial image to be displayed
 
 // Declaring an array of images.
 PImage[] images = new PImage[maxImages];
@@ -19,12 +21,13 @@ PImage[] images = new PImage[maxImages];
 int next = 0;
 
 void setup() { 
-  size(1000, 1000);
+  size(640, 480);
   
   // Loading the images into the array
   // Don't forget to put the JPG files in the data folder!
   for (int i = 0; i < images.length; i ++ ) {
     images[i] = loadImage( "proto" + i + ".jpg" );
+    image(images[i], random(1000), random(1000));
   }
   
   video = new Capture(this, 640, 480);
@@ -37,13 +40,11 @@ void captureEvent(Capture video) {
 
 void draw() {
   //image(video, 0, 0);
-
-  if ((second() % 4) == 0) {
-    int i = 0;
-    image(images[i], random(1000), random(1000));
-    i = (i + 1) % images.length;
+  
+  if ((second() % 5) == 0) {
+    image(images[dispIndex], random(400), random(250));
+    dispIndex = (dispIndex + 1) % images.length;
   }
-
   
   // increment image index by one each cycle
   // use modulo " % "to return to 0 once the end of the array is reached
