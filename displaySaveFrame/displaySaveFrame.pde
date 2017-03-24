@@ -36,7 +36,7 @@ void captureEvent(Capture video) {
 }
 
 void draw() {
-  image(video, 0, 0);
+  //image(video, 0, 0);
 
   if ((second() % 4) == 0) {
     int i = 0;
@@ -65,6 +65,7 @@ void draw() {
 
 
 void mousePressed() {
+  image(video, 0, 0);
   saveFrame("data/proto" + imageIndex + ".jpg");
   imageIndex = (imageIndex + 1) % images.length;
   // A new image is picked randomly when the mouse is clicked
