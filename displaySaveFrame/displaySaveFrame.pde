@@ -24,7 +24,7 @@ void setup() {
   // Loading the images into the array
   // Don't forget to put the JPG files in the data folder!
   for (int i = 0; i < images.length; i ++ ) {
-    images[i] = loadImage( "data/proto" + i + ".jpg" );
+    images[i] = loadImage( "proto" + i + ".jpg" );
   }
   
   video = new Capture(this, 640, 480);
