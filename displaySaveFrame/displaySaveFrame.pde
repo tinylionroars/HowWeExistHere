@@ -42,7 +42,7 @@ void draw() {
   //image(video, 0, 0);
   
   if ((second() % 5) == 0) {
-    image(images[dispIndex], random(400), random(250));
+    image(images[dispIndex], random(-400, 400), random(-250, 250));
     dispIndex = (dispIndex + 1) % images.length;
   }
   
