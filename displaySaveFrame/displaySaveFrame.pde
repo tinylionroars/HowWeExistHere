@@ -49,7 +49,10 @@ void captureEvent(Capture video) {
 void draw() {
   //image(video, 0, 0);
   if ((second() % 5) == 0) {
-    tint(random(80,255), random(80,255), random(80,255), (frameCount - random(10,50)) % 255);
+    for (int i = 0; i < images.length; i ++ ) {
+      images[i] = loadImage( "proto" + i + ".jpg" );
+    }
+    tint(random(60,255), random(60,255), random(60,255), (frameCount - random(10,50)) % 255);
     image(images[dispIndex], random(-400, 400), random(-250, 250));
     delay(200);
     dispIndex = (dispIndex + 1) % images.length;
@@ -74,8 +77,11 @@ void draw() {
 
 
 void mousePressed() {
+  tint(255,random(150,200));
   image(video, 0, 0);
   saveFrame("data/proto" + imageIndex + ".jpg");
+  noTint();
+  image(images[imageIndex], 0, 0);
   imageIndex = (imageIndex + 1) % images.length;
   // A new image is picked randomly when the mouse is clicked
   // Note the index to the array must be an integer!
