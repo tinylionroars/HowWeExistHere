@@ -39,9 +39,9 @@ void draw() {
   image(video, 0, 0);
 
   if ((second() % 4) == 0) {
-    for (int i = 0; i < images.length; i ++ ) {
-      image(images[i], random(1000), random(1000));
-    }
+    int i = 0;
+    image(images[i], random(1000), random(1000));
+    i = (i + 1) % images.length;
   }
 
   
